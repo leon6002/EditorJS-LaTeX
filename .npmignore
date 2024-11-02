@@ -1,0 +1,7 @@
+# .npmignore示例
+# src/
+tests/
+*.md
+*.log
+gulpfile.js
+example/

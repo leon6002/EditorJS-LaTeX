@@ -1,5 +1,6 @@
 const editor = new EditorJS({
     holder: "editorjs",
+    readOnly: true,
     tools: {
             Math: {
             class: EJLaTeX,
