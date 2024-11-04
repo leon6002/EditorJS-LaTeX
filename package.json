@@ -1,14 +1,14 @@
 {
   "name": "editorjs-tool-latex",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "keywords": [
     "EditorJS",
     "LaTeX"
   ],
   "description": "LaTeX block support for EditorJS",
   "license": "MIT",
-  "repository": "https://github.com/leon6002/EditorJS-Tool-LaTeX.git",
-  "homepage": "https://github.com/leon6002/EditorJS-Tool-LaTeX.git#readme",
+  "repository": "https://github.com/leon6002/EditorJs-Tool-LaTex.git",
+  "homepage": "https://github.com/leon6002/EditorJs-Tool-LaTex#readme",
   "file": [
     "dist"
   ],
