@@ -1,68 +1,127 @@
-# EditorJS-LaTeX
-[![](https://data.jsdelivr.com/v1/package/gh/mdgaziur/EditorJS-LaTeX/badge)](https://www.jsdelivr.com/package/gh/mdgaziur/EditorJS-LaTeX)
-Check the example: https://mdgaziur.github.io/EditorJS-LaTeX/example
+![](https://badgen.net/badge/Editor.js/v2.0/blue)
 
+# LaTex Tool
 
-### LaTeX block support for EditorJS
-### Created By: MD Gaziur Rahman Noor
+LaTex Block for the [Editor.js](https://editorjs.io).
 
-![Screenshot of EditorJS-LaTeX](./screenshot.png)
+![tool-screenshot](./assets/tool-screenshot.jpg)
 
-## Setting Up
-Add the following code inside the ```<head>``` tag.
+## Features
 
+- Render LaTex on input.
+- Support read-only mode, input field is diabled on read-only mode.
+- Allows adding a border, show/hide input filed.
+- Allows stretching the preview to the container's full-width
 
-```html
-<script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@2.19.0/dist/editor.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/mdgaziur/EditorJS-LaTeX@latest/dist/editorjs-latex.bundle-min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mdgaziur/EditorJS-LaTeX@latest/dist/editorjs-latex.bundle.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css"></link>
-```
-To use with nodejs simply run ```npm i editorjs-latex``` and import using the following code:
-```javascript
-const EJLaTeX = require('editorjs-latex');
+## Installation
+
+Get the package
+
+```shell
+npm i editorjs-tool-latex
 ```
 
-
-To add this library to EditorJS, simply add the follwing code:
+Include module at your application
 
 ```javascript
-tools: {
-        Math: {
-        class: EJLaTeX,
-        shortcut: 'CMD+SHIFT+M'
-    }, ...
-}
+import LaTexTool from 'editorjs-tool-latex';
 ```
 
-If you need to adjust the theming of the editor, you can add CSS rules in the config like:
+Optionally, you can load this tool from [JsDelivr CDN](https://cdn.jsdelivr.net/npm/editorjs-tool-latex@latest)
+
+## Usage
+
+Add a new Tool to the `tools` property of the Editor.js initial config.
 
 ```javascript
-tools: {
-        Math: {
-        class: EJLaTeX,
-        shortcut: 'CMD+SHIFT+M',
+import LaTexTool from 'editorjs-tool-latex';
+
+var editor = EditorJS({
+  ...
+
+  tools: {
+    ...
+    math: {
+      class: LaTexTool,
         config: {
-            css: '.math-input-wrapper { padding: 5px; }'
+            features: {
+                border: true,
+                stretch: true,
+                hideInput: true,
+            },
+        },
+    }
+  }
+
+  ...
+});
+```
+
+## Config Params
+
+Latex Tool supports these configuration parameters:
+
+| Field       | Type     | Description                                                                                                       |
+| ----------- | -------- | ----------------------------------------------------------------------------------------------------------------- |
+| placeholder | `string` | Placeholder for input field                                                                                       |
+| features    | `object` | Allows you to enable/disable additional features such as border, background tunes and caption. See details below. |
+
+## Tool's settings
+
+1. Add border to preview section
+
+2. Stretch to full-width
+
+3. Hide input filed
+
+Add extra setting-buttons by adding them to the `actions`-array in the configuration:
+
+```js
+actions: [
+    {
+        name: 'new_button',
+        icon: '<svg>...</svg>',
+        title: 'New Button',
+        toggle: true,
+        action: (name) => {
+            alert(`${name} button clicked`);
         }
-    }, ...
+    }
+]
+```
+
+You can disable features such as border, stretch and hideInput tunes by defining `features` in the configuration:
+
+```js
+features: {
+  hideInput: true,
+  border: false,
+  stretch: false
 }
 ```
 
-## Getting data
-The output data of this plugin will look like bellow:
+**_NOTE:_** set caption to `optional` in order to configure caption as a tune.
+
+## Output data
+
+This Tool returns `data` with following format
+
+| Field      | Type      | Description                   |
+| ---------- | --------- | ----------------------------- |
+| math       | `string`  | raw input value               |
+| hideInput  | `boolean` | hide input field              |
+| withBorder | `boolean` | add border to preview section |
+| stretched  | `boolean` | stretch to screen's width     |
 
 ```json
 {
-    "type" : "Math",
-    "data" : {
-        "math" : "\\frac{a \\pm b}{(a+b)^2}"
+    "type": "math",
+    "data":
+    {
+        "math": "f(t) = \\frac{1}{2\\pi} \\int_{-\\infty}^{\\infty} F(\\omega) e^{i \\omega t} d\\omega",
+        "withBorder": false,
+        "stretched": false,
+        "hideInput": false
     }
 }
 ```
-
-The "math" item contains the expression. You can use KaTeX to render that in your document.
-
-
-## Conclusion
-If there is any problem or bugs, create an issue in this repository. I'll try my best to help you.

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LaTex Plugin Test | EditorJS</title>
+  </head>
+  <body>
+    <button onclick="toggleReadonly()">toggle readonly</button>
+    <button onclick="onSave()">save</button>
+    <div id="editorjs"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest/dist/editor.js"></script>
+    <script src="../dist/editorjs-tool-latex.umd.js"></script>
+    <script>
+      const exampleData = {
+        time: 1730709641382,
+        blocks: [
+          {
+            id: 'R7j22DMKyt',
+            type: 'math',
+            data: {
+              withBorder: false,
+              stretched: false,
+              hideInput: false,
+              math: 'f(t) = \\frac{1}{2\\pi} \\int_{-\\infty}^{\\infty} F(\\omega) e^{i \\omega t} d\\omega',
+            },
+          },
+        ],
+        version: '2.26.5',
+      };
+      const editor = new EditorJS({
+        holder: 'editorjs',
+        readOnly: false,
+        tools: {
+          math: {
+            class: LaTexTool,
+            config: {
+              placeholder: 'input LaTex expression here...',
+              features: {
+                border: true,
+                stretch: true,
+                hideInput: true,
+              },
+              actions: [
+                {
+                  name: 'new_button',
+                  icon: '<svg id="Layer_1" enable-background="new 0 0 506.1 506.1" height="512" viewBox="0 0 506.1 506.1" width="512" xmlns="http://www.w3.org/2000/svg"><path d="m489.609 0h-473.118c-9.108 0-16.491 7.383-16.491 16.491v473.118c0 9.107 7.383 16.491 16.491 16.491h473.119c9.107 0 16.49-7.383 16.49-16.491v-473.118c0-9.108-7.383-16.491-16.491-16.491zm-16.49 473.118h-440.138v-440.137h440.138z"/><path d="m367.278 240.136v-62.051c0-8.836-7.163-16-16-16s-16 7.164-16 16v147.377c0 15.024 18.993 21.77 28.457 10.03 34.691 18.107 77.146-6.988 77.146-46.831.001-37.966-39-63.416-73.603-48.525zm20.802 69.327c-11.47 0-20.802-9.332-20.802-20.802s9.332-20.802 20.802-20.802 20.802 9.332 20.802 20.802-9.332 20.802-20.802 20.802z"/><path d="m112.397 200.262h-14.014c-8.836 0-16 7.164-16 16s7.164 16 16 16h14.014c8.291 0 15.037 6.746 15.037 15.037v4.998c-30.589-10.389-62.216 12.536-62.216 44.609 0 34.402 35.954 57.331 67.13 42.629 10.128 9.747 27.086 2.537 27.086-11.521v-80.715c0-25.936-21.101-47.037-47.037-47.037zm-.071 111.752c-8.331 0-15.108-6.777-15.108-15.108s6.777-15.108 15.108-15.108 15.108 6.777 15.108 15.108-6.778 15.108-15.108 15.108z"/><path d="m287.786 243.114c-6.248-6.248-16.379-6.249-22.627 0l-18.11 18.11-18.11-18.11c-6.249-6.249-16.379-6.249-22.627 0-6.249 6.249-6.249 16.379 0 22.627l18.11 18.11-18.11 18.11c-6.248 6.248-6.248 16.379 0 22.627s16.378 6.249 22.627 0l18.11-18.11 18.11 18.11c6.246 6.248 16.377 6.249 22.627 0 6.249-6.249 6.249-16.379 0-22.627l-18.11-18.11 18.11-18.11c6.249-6.248 6.249-16.379 0-22.627z"/></svg>',
+                  title: 'New Button',
+                  toggle: true,
+                  action: (name) => {
+                    alert(`${name} button clicked`);
+                  },
+                },
+              ],
+            },
+          },
+        },
+        data: exampleData,
+      });
+      const toggleReadonly = () => {
+        console.log('toggole readOnly');
+        console.log(editor);
+        editor.readOnly.toggle();
+      };
+      const onSave = async () => {
+        try {
+          const blockData = await editor.save();
+          alert(JSON.stringify(blockData));
+          console.log('saved data: ', blockData);
+        } catch (error) {
+          console.log('Saving failed: ', error);
+        }
+      };
+    </script>
+  </body>
+</html>

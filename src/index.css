@@ -1,0 +1,49 @@
+.latex-tool {
+  row-gap: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  width: 100%;
+
+  &__preview {
+    box-sizing: border-box;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+  }
+
+  &__input {
+    box-sizing: border-box;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    box-shadow: none;
+    padding: 5px 4px;
+    width: 100%;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+      'Liberation Mono', 'Courier New', monospace;
+    font-size: 14px;
+  }
+
+  /**
+   * Tunes
+   * ----------------
+   */
+
+  &--withBorder {
+    ^&__preview {
+      border-radius: 4px;
+      border: 1px solid lightgray;
+    }
+  }
+
+  &--stretched {
+    width: 100%;
+  }
+
+  &--hideInput {
+    ^&__input {
+      display: none;
+    }
+  }
+}

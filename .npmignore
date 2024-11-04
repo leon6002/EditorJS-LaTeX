@@ -1,7 +1,9 @@
-# .npmignore示例
-# src/
-tests/
-*.md
-*.log
-gulpfile.js
-example/
+.idea/
+dev/
+src/
+.babelrc
+.eslintrc
+vite.config.js
+postcss.config.js
+yarn.lock
+script.sh
