@@ -7,3 +7,4 @@ vite.config.js
 postcss.config.js
 yarn.lock
 script.sh
+assets/
