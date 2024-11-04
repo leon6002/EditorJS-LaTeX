@@ -7,7 +7,8 @@
   ],
   "description": "LaTeX block support for EditorJS",
   "license": "MIT",
-  "repository": "https://github.com/leon6002/EditorJS-LaTeX.git",
+  "repository": "https://github.com/leon6002/EditorJS-Tool-LaTeX.git",
+  "homepage": "https://github.com/leon6002/EditorJS-Tool-LaTeX.git#readme",
   "file": [
     "dist"
   ],
@@ -32,7 +33,6 @@
     "name": "leon6002",
     "email": "gulongchen1@gmail.com"
   },
-  "homepage": "https://github.com/leon6002/EditorJS-LaTeX#readme",
   "devDependencies": {},
   "dependencies": {
     "@codexteam/icons": "^0.3.2",
