@@ -141,7 +141,7 @@ export default class LaTexTool implements BlockTool {
       {
         name: 'hideInput',
         icon: IconHidden,
-        title: 'Hide input on read mode',
+        title: 'Hide input',
         toggle: true,
       },
       {

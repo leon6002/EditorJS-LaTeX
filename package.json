@@ -1,6 +1,6 @@
 {
   "name": "editorjs-tool-latex",
-  "version": "2.1.0",
+  "version": "2.3.0",
   "keywords": [
     "EditorJS",
     "LaTeX"
@@ -17,9 +17,9 @@
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/editorjs-tool-latex/mjs",
+      "import": "./dist/editorjs-tool-latex.mjs",
       "require": "./dist/editorjs-tool-latex.umd.js",
-      "types": "./dist/index/d.ts"
+      "types": "./dist/index.d.ts"
     }
   },
   "scripts": {
